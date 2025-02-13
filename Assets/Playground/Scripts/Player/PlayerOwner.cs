@@ -10,12 +10,12 @@ namespace Playground.Player
         private NetworkPlayer player;
         private Camera mainCamera;
         private NameUI nameUI;
+        private SkinnedMeshRenderer skinnedMeshRenderer;
 
         private Vector2 lookDirection;
 
         [SerializeField] private float cameraDistance;
         [SerializeField] private Vector3 cameraOffset;
-        [SerializeField] private SkinnedMeshRenderer skinnedMeshRenderer;
         [SerializeField] private Color ownerColor;
 
         private Color[] defaultColors;
@@ -28,6 +28,7 @@ namespace Playground.Player
             playerInput = new PlayerInputAction();
             player = GetComponentInParent<NetworkPlayer>();
             nameUI = FindObjectOfType<NameUI>();
+            skinnedMeshRenderer = player.GetComponentInChildren<SkinnedMeshRenderer>(true);
 
             player.Name.OnValueChanged += OnNameChanged;
             nameUI.OnConfirmName += OnConfirmName;

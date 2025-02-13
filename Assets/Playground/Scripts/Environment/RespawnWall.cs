@@ -10,6 +10,7 @@ namespace Playground.Scripts.Environment
     public class RespawnWall : MonoBehaviour
     {
         private Collider col;
+
         private void Start()
         {
             col = GetComponent<Collider>();
@@ -22,9 +23,10 @@ namespace Playground.Scripts.Environment
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.TryGetComponent(out PlayerServer player))
+            if (other.gameObject.TryGetComponent(out NetworkPlayer player))
             {
-                player.FreeFall();
+                var playerServer = player.GetComponentInChildren<PlayerServer>();
+                playerServer.FreeFall();
             }
         }
     }

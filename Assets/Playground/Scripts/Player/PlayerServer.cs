@@ -62,7 +62,7 @@ namespace Playground.Player
                 var offsetRotation = Mathf.MoveTowardsAngle(transform.eulerAngles.y, targetRotation,
                     player.config.rotateSpeed * Time.deltaTime);
                 rb.MoveRotation(Quaternion.Euler(0f, offsetRotation, 0f));
-                Debug.Log($"Rots {transform.eulerAngles.y} {targetRotation} {offsetRotation}");
+                // Debug.Log($"Rots {transform.eulerAngles.y} {targetRotation} {offsetRotation}");
 
 
                 //Update position
