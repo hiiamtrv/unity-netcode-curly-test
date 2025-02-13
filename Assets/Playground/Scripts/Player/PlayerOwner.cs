@@ -21,11 +21,12 @@ namespace Playground.Player
         private Color[] defaultColors;
         private bool cursorLocked;
 
+
         private void OnEnable()
         {
             mainCamera = Camera.main;
             playerInput = new PlayerInputAction();
-            player = GetComponent<NetworkPlayer>();
+            player = GetComponentInParent<NetworkPlayer>();
             nameUI = FindObjectOfType<NameUI>();
 
             player.Name.OnValueChanged += OnNameChanged;
@@ -82,6 +83,19 @@ namespace Playground.Player
             if (playerInput.Player.Jump.triggered && player.IsGrounded.Value)
             {
                 player.RequestJumpServerRpc();
+            }
+
+            if (playerInput.Player.PrimaryAction.WasPressedThisFrame())
+            {
+                player.RequestPrimaryActionServerRpc(false);
+            }
+            else if (playerInput.Player.PrimaryAction.WasReleasedThisFrame())
+            {
+                player.RequestPrimaryActionServerRpc(true);
+            }
+            else if (playerInput.Player.SecondaryAction.WasPressedThisFrame())
+            {
+                player.RequestSecondaryActionServerRpc();
             }
 
             Cursor.lockState = cursorLocked ? CursorLockMode.Locked : CursorLockMode.None;

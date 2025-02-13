@@ -1036,10 +1036,8 @@ GameObject:
   - component: {fileID: -4612842226931345659}
   - component: {fileID: 7478698318477181286}
   - component: {fileID: 8227851713438247805}
-  - component: {fileID: 7162388504749197023}
   - component: {fileID: 2043888605736515045}
-  - component: {fileID: 1346996060048648605}
-  - component: {fileID: -1592600817463550784}
+  - component: {fileID: 7162388504749197023}
   - component: {fileID: -895535155480146023}
   m_Layer: 6
   m_Name: Networked Amature
@@ -1159,6 +1157,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6c0be61502bb534f922ebb746851216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2043888605736515045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4416926081852918481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 951099334
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!114 &7162388504749197023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1171,9 +1189,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3cab2aa11294020a923bd871ec1c06d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ownerComponent: {fileID: 1346996060048648605}
-  serverComponent: {fileID: -1592600817463550784}
-  remoteComponent: {fileID: 0}
+  ownerModule: {fileID: 2542013701177584482, guid: 062ceed514dade343b46a074aa2545b0, type: 3}
+  serverModule: {fileID: 2542013701177584482, guid: 1953014e6ec142e4c94b541aee7452b3, type: 3}
+  remoteModule: {fileID: 0}
   config: {fileID: 11400000, guid: e263b58b740d5e64994bc64195d029e4, type: 2}
   MoveDirection:
     m_InternalValue: {x: 0, y: 0}
@@ -1250,58 +1268,8 @@ MonoBehaviour:
     m_InternalValue: 0
   Speed:
     m_InternalValue: 0
---- !u!114 &2043888605736515045
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4416926081852918481}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 951099334
-  AlwaysReplicateAsRoot: 0
-  SynchronizeTransform: 1
-  ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 1
-  SpawnWithObservers: 1
-  DontDestroyWithOwner: 0
-  AutoObjectParentSync: 1
---- !u!114 &1346996060048648605
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4416926081852918481}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da52f39ebd9b477a9cb697594d93dd65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cameraDistance: 5
-  cameraOffset: {x: 0, y: 2, z: 0}
-  skinnedMeshRenderer: {fileID: 5597113867290821413}
-  ownerColor: {r: 0.1254902, g: 1, b: 0.1254902, a: 0}
---- !u!114 &-1592600817463550784
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4416926081852918481}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eff7771e7efa42b58a0eb48622d2a21e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  groundCheckRadius: 0.2
-  groundLayers:
-    serializedVersion: 2
-    m_Bits: 1
+  ChargeValue:
+    m_InternalValue: -1
 --- !u!114 &-895535155480146023
 MonoBehaviour:
   m_ObjectHideFlags: 0

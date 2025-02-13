@@ -6,10 +6,10 @@ namespace Playground.Base
     public class MyNetworkObject : NetworkBehaviour
     {
         [Header("Owner/Server/Remote")] [SerializeField]
-        protected MonoBehaviour ownerComponent;
+        protected GameObject ownerModule;
 
-        [SerializeField] protected MonoBehaviour serverComponent;
-        [SerializeField] protected MonoBehaviour remoteComponent;
+        [SerializeField] protected GameObject serverModule;
+        [SerializeField] protected GameObject remoteModule;
 
         public override void OnNetworkSpawn()
         {
@@ -31,11 +31,24 @@ namespace Playground.Base
 
         protected void RefreshNetworkRole()
         {
-            if (serverComponent != null) serverComponent.enabled = IsServer;
+            if (serverModule != null && IsServer)
+            {
+                var mdl = Instantiate(serverModule, transform);
+                mdl.name = "_serverModule";
+            }
 
             var isOwner = IsOwner;
-            if (ownerComponent != null) ownerComponent.enabled = isOwner;
-            if (remoteComponent != null) remoteComponent.enabled = !isOwner;
+            if (ownerModule != null && isOwner)
+            {
+                var mdl = Instantiate(ownerModule, transform);
+                mdl.name = "_ownerModule";
+            }
+
+            if (remoteModule != null && !isOwner)
+            {
+                var mdl = Instantiate(remoteModule, transform);
+                mdl.name = "_remoteModule";
+            }
         }
     }
 }

@@ -16,3 +16,6 @@ MonoBehaviour:
   moveLiftForce: 4.5
   rotateSpeed: 360
   jumpForce: 5
+  chargeMax: 100
+  chargeSpeed: 25
+  chargeSpeedEffect: 0.5

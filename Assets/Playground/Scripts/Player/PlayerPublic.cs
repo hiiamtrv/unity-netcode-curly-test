@@ -23,7 +23,6 @@ namespace Playground.Player
         private NetworkPlayer player;
 
         private bool isJumping = false;
-        private bool prevGrounded = false;
 
         private void OnEnable()
         {

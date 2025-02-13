@@ -10,5 +10,9 @@ namespace Playground.Player
         public float moveLiftForce;
         public float rotateSpeed;
         public float jumpForce;
+
+        public float chargeMax;
+        public float chargeSpeed;
+        public float chargeSpeedEffect;
     }
 }
