@@ -18,11 +18,11 @@ namespace Playground.Player
         public Action OnResetCharge;
         public Action OnReleaseCharge;
 
-        public NetworkVariable<Vector2> MoveDirection = NetworkVar.Make<Vector2>(true, true);
-        public NetworkVariable<FixedString64Bytes> Name = NetworkVar.Make<FixedString64Bytes>(true, true);
-        public NetworkVariable<bool> IsGrounded = NetworkVar.Make<bool>(true, true);
-        public NetworkVariable<float> Speed = NetworkVar.Make<float>(true, true);
-        public NetworkVariable<float> ChargeValue = NetworkVar.Make<float>(false, true, -1);
+        public NetworkVariable<Vector2> MoveDirection = NetworkVar.Make<Vector2>();
+        public NetworkVariable<FixedString64Bytes> Name = NetworkVar.Make<FixedString64Bytes>();
+        public NetworkVariable<bool> IsGrounded = NetworkVar.Make<bool>();
+        public NetworkVariable<float> Speed = NetworkVar.Make<float>();
+        public NetworkVariable<float> ChargeValue = NetworkVar.Make<float>(false, false, -1);
 
         [ServerRpc]
         public void RequestJumpServerRpc()
@@ -55,6 +55,18 @@ namespace Playground.Player
             {
                 OnBlock?.Invoke();
             }
+        }
+
+        [ServerRpc]
+        public void RequestChangeNameServerRpc(FixedString64Bytes newName)
+        {
+            Name.Value = newName;
+        }
+
+        [ServerRpc]
+        public void RequestChangeMoveDirectionServerRpc(float x, float z)
+        {
+            MoveDirection.Value = new Vector2(x, z);
         }
     }
 }

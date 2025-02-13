@@ -58,12 +58,13 @@ namespace Playground.Player
             var moveDirection = player.MoveDirection.Value * (isCharging ? player.config.chargeSpeedEffect : 1f);
             if (moveDirection.magnitude > 0.1f)
             {
-                var targetRotation = Mathf.Atan2(moveDirection.x, moveDirection.y) * Mathf.Rad2Deg;
-                var offsetRotation = Mathf.MoveTowardsAngle(transform.eulerAngles.y, targetRotation,
-                    player.config.rotateSpeed * Time.deltaTime);
-                rb.MoveRotation(Quaternion.Euler(0f, offsetRotation, 0f));
-                // Debug.Log($"Rots {transform.eulerAngles.y} {targetRotation} {offsetRotation}");
-
+                if (rb.velocity.magnitude > 0.1f)
+                {
+                    var targetRotation = Mathf.Atan2(moveDirection.x, moveDirection.y) * Mathf.Rad2Deg;
+                    var offsetRotation = Mathf.MoveTowardsAngle(transform.eulerAngles.y, targetRotation,
+                        player.config.rotateSpeed * Time.deltaTime);
+                    rb.MoveRotation(Quaternion.Euler(0f, offsetRotation, 0f));
+                }
 
                 //Update position
                 var lift = 0f;

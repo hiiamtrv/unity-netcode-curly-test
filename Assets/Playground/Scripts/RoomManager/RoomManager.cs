@@ -27,7 +27,7 @@ namespace Playground.RoomManager
             createRoomUI.OnCloseRoom += CloseRoom;
             joinRoomUI.OnConnect += ConnectRoom;
             joinRoomUI.OnLeave += LeaveRoom;
-            
+
             UpdateUI();
             createRoomUI.SetCloseState();
             joinRoomUI.SetStateJoined(false);
@@ -85,12 +85,9 @@ namespace Playground.RoomManager
 
         private void CloseRoom()
         {
-            if (network.IsListening)
-            {
-                network.Shutdown();
-                createRoomUI.SetCloseState();
-                createRoomUI.SetTextResult("Room Closed");
-            }
+            network.Shutdown();
+            createRoomUI.SetCloseState();
+            createRoomUI.SetTextResult("Room Closed");
         }
 
         private void ConnectRoom(string address, string sPort)
@@ -127,12 +124,9 @@ namespace Playground.RoomManager
 
         private void LeaveRoom()
         {
-            if (network.IsListening)
-            {
-                network.Shutdown();
-                joinRoomUI.SetStateJoined(false);
-                joinRoomUI.SetTextResult("Left room");
-            }
+            network.Shutdown();
+            joinRoomUI.SetStateJoined(false);
+            joinRoomUI.SetTextResult("Left room");
         }
 
         private IEnumerator GetPublicIP(Action<string> onComplete)

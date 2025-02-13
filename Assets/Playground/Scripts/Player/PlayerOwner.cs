@@ -69,7 +69,7 @@ namespace Playground.Player
             var mInput = playerInput.Player.Move.ReadValue<Vector2>();
             var rot = Quaternion.Euler(0, mainCamera.transform.eulerAngles.y, 0);
             var move = rot * new Vector3(mInput.x, 0, mInput.y);
-            player.MoveDirection.Value = new Vector2(move.x, move.z);
+            player.RequestChangeMoveDirectionServerRpc(move.x, move.z);
 
             UpdateCameraRotation();
 
@@ -121,9 +121,10 @@ namespace Playground.Player
             if (newName.Length > FixedString64Bytes.UTF8MaxLengthInBytes)
             {
                 OnCancelName();
+                return;
             }
 
-            player.Name.Value = newName;
+            player.RequestChangeNameServerRpc(newName);
         }
 
         private void OnCancelName()
