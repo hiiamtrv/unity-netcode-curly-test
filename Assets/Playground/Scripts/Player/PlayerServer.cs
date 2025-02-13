@@ -76,6 +76,10 @@ namespace Playground.Player
 
                 rb.AddRelativeForce(0, lift, force);
             }
+            else
+            {
+                rb.angularVelocity = Vector3.zero;
+            }
 
             //Calculate speed
             player.Speed.Value = rb.velocity.magnitude;
